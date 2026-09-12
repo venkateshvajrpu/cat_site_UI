@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 Disallow: /404
 
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://srinivas-catering.onrender.com/sitemap.xml

@@ -56,9 +56,9 @@ export const SITE_CONFIG = new InjectionToken<SiteConfig>('SITE_CONFIG');
 
 export const siteConfig: SiteConfig = {
   // TODO(client): business name and tagline
-  name: 'Sri Annapurna Caterers',
+  name: 'Srinivas Catering',
   tagline: 'Pure-veg South Indian catering, served with Andhra warmth',
-  legalName: 'Sri Annapurna Caterers',
+  legalName: 'Srinivas Catering',
   // TODO(client): phone number (display format)
   phone: '+91 99999 99999',
   // TODO(client): WhatsApp number, digits only with country code
@@ -100,7 +100,7 @@ export const siteConfig: SiteConfig = {
     'Srikakulam',
   ],
   // TODO(client): production domain, no trailing slash
-  siteUrl: 'https://example.com',
+  siteUrl: 'https://srinivas-catering.onrender.com',
   defaultOgImage: 'images/og-default.jpg',
   // TODO(client): year the business started
   establishedYear: 2010,
