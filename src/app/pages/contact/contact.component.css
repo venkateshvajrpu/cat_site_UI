@@ -6,13 +6,18 @@
   padding-block-start: var(--space-4);
 }
 
+.channels .grid {
+  gap: var(--space-3);
+}
+
+/* Phone: icon on the left, text beside it — three short rows instead of three tall cards. */
 .channel {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--space-4);
   align-items: center;
-  gap: var(--space-1);
-  padding: var(--space-7) var(--space-5);
-  text-align: center;
+  padding: var(--space-4) var(--space-5);
+  text-align: start;
   text-decoration: none;
   color: var(--color-ink);
   background: var(--color-surface);
@@ -29,12 +34,12 @@
 }
 
 .channel__icon {
+  grid-row: 1 / span 3;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 4rem;
-  height: 4rem;
-  margin-block-end: var(--space-2);
+  width: 3.25rem;
+  height: 3.25rem;
   border-radius: var(--radius-full);
   background: var(--color-primary-soft);
   color: var(--color-primary);
@@ -47,13 +52,13 @@
 
 .channel__label {
   font-family: var(--font-display);
-  font-size: var(--text-xl);
+  font-size: var(--text-lg);
   color: var(--color-primary);
 }
 
 .channel__value {
   font-weight: var(--weight-semibold);
-  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
 .channel__hint {
@@ -92,9 +97,15 @@
 
 .details__hours li {
   display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: var(--space-3);
+  grid-template-columns: auto 1fr;
+  gap: var(--space-1) var(--space-3);
   align-items: center;
+}
+
+/* Phone: the time drops under the day range instead of squeezing beside it. */
+.details__hours li span:last-child {
+  grid-column: 2;
+  color: var(--color-ink);
 }
 
 .details__hours app-icon {
@@ -117,6 +128,39 @@
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+@media (min-width: 48rem) {
+  .channels .grid {
+    gap: var(--space-6);
+  }
+
+  .channel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-7) var(--space-5);
+    text-align: center;
+  }
+
+  .channel__icon {
+    width: 4rem;
+    height: 4rem;
+    margin-block-end: var(--space-2);
+  }
+
+  .channel__label {
+    font-size: var(--text-xl);
+  }
+
+  .details__hours li {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .details__hours li span:last-child {
+    grid-column: auto;
+  }
 }
 
 @media (min-width: 64rem) {

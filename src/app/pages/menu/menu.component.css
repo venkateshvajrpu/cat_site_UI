@@ -56,8 +56,13 @@
 }
 
 .category {
-  padding-block: var(--space-9);
+  padding-block: var(--space-8);
   scroll-margin-top: calc(var(--nav-height) + 4rem);
+}
+
+/* Phone: dish cards sit closer together so a category reads as one list. */
+.category .grid {
+  gap: var(--space-3);
 }
 
 .category:nth-of-type(even) {
@@ -67,9 +72,9 @@
 .category__head {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: var(--space-4);
+  gap: var(--space-3) var(--space-4);
   align-items: start;
-  margin-block-end: var(--space-7);
+  margin-block-end: var(--space-5);
 }
 
 .category__icon {
@@ -123,6 +128,18 @@
 }
 
 @media (min-width: 48rem) {
+  .category {
+    padding-block: var(--space-9);
+  }
+
+  .category .grid {
+    gap: var(--space-6);
+  }
+
+  .category__head {
+    margin-block-end: var(--space-7);
+  }
+
   .filter__scroll {
     flex-wrap: wrap;
     justify-content: center;

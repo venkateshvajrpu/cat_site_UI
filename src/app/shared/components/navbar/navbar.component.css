@@ -2,6 +2,10 @@
   position: sticky;
   top: 0;
   z-index: var(--z-nav);
+}
+
+/* Blur lives here, not on .nav — backdrop-filter would turn the fixed panel into a child of the bar. */
+.nav__bar {
   background: color-mix(in srgb, var(--color-bg) 92%, transparent);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--color-border);
@@ -19,6 +23,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
+  min-height: var(--tap-target);
   text-decoration: none;
   color: var(--color-primary);
   font-family: var(--font-display);

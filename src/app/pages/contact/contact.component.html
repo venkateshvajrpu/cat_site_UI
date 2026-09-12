@@ -11,7 +11,7 @@
     <a class="channel channel--whatsapp" [href]="wa.general()" target="_blank" rel="noopener">
       <span class="channel__icon"><app-icon name="whatsapp" size="1.75rem" /></span>
       <span class="channel__label">WhatsApp</span>
-      <span class="channel__value">+{{ config.whatsapp }}</span>
+      <span class="channel__value">{{ wa.whatsappDisplay() }}</span>
       <span class="channel__hint">Message us anytime</span>
     </a>
     <a class="channel" [href]="wa.telHref()">

@@ -40,6 +40,13 @@ export class WhatsappService {
     );
   }
 
+  /** Human-readable WhatsApp number, e.g. "+91 99999 99999" (falls back to +digits). */
+  whatsappDisplay(): string {
+    const digits = this.config.whatsapp.replace(/\D/g, '');
+    const m = /^(91)(\d{5})(\d{5})$/.exec(digits);
+    return m ? `+${m[1]} ${m[2]} ${m[3]}` : `+${digits}`;
+  }
+
   telHref(): string {
     return `tel:${this.config.phone.replace(/\s+/g, '')}`;
   }

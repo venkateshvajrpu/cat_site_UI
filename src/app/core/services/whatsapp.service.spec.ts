@@ -47,4 +47,8 @@ describe('WhatsappService', () => {
     expect(wa.telHref()).toBe('tel:+911234567890');
     expect(wa.mailtoHref('Wedding quote')).toBe('mailto:test@example.test?subject=Wedding%20quote');
   });
+
+  it('whatsappDisplay() formats an Indian number for reading', () => {
+    expect(wa.whatsappDisplay()).toBe('+91 12345 67890');
+  });
 });

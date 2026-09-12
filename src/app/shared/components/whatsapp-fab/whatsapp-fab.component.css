@@ -27,3 +27,8 @@
 .fab:focus-visible {
   outline-color: var(--color-accent);
 }
+
+/* The open mobile menu has its own WhatsApp button; keep the FAB from sitting on top of it. */
+:host-context(body.nav-open) .fab {
+  visibility: hidden;
+}

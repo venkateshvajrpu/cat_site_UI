@@ -35,14 +35,15 @@
   padding-block-start: var(--space-4);
 }
 
+/* Two columns even on phones — a photo grid reads better than a stack of full-width images. */
 .masonry {
-  columns: 1;
-  column-gap: var(--space-4);
+  columns: 2;
+  column-gap: var(--space-3);
 }
 
 .masonry__item {
   break-inside: avoid;
-  margin-block-end: var(--space-4);
+  margin-block-end: var(--space-3);
 }
 
 .thumb {
@@ -79,7 +80,11 @@
 
 @media (min-width: 48rem) {
   .masonry {
-    columns: 2;
+    column-gap: var(--space-4);
+  }
+
+  .masonry__item {
+    margin-block-end: var(--space-4);
   }
 }
 

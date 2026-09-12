@@ -14,11 +14,11 @@
           <app-icon name="whatsapp" size="1.25em" />
           Plan on WhatsApp
         </a>
-        <a class="btn btn--outline btn--lg" [href]="wa.telHref()">
+        <a class="btn btn--outline btn--lg hero__secondary" [href]="wa.telHref()">
           <app-icon name="phone" size="1.25em" />
           Call us
         </a>
-        <a class="btn btn--accent btn--lg" routerLink="/menu">View menu</a>
+        <a class="btn btn--accent btn--lg hero__secondary" routerLink="/menu">View menu</a>
       </div>
       <ul class="hero__proof" role="list">
         <li><app-icon name="leaf" /> Pure veg kitchen</li>
@@ -64,7 +64,7 @@
     <app-section-heading eyebrow="Our menu" title="From tiffins to pelli bhojanam" teluguTitle="మా వంటకాలు">
       Every dish is pure vegetarian. Browse by category or ask us to build a custom menu.
     </app-section-heading>
-    <div class="grid grid--4">
+    <div class="grid grid--4 categories">
       @for (category of featuredCategories; track category.id) {
         <a class="leaf-card category" routerLink="/menu" [queryParams]="{ category: category.id }">
           <app-icon [name]="category.icon" size="2rem" />
@@ -99,7 +99,7 @@
 <section class="section" appReveal>
   <div class="container">
     <app-section-heading eyebrow="Testimonials" title="What Vizag families say" teluguTitle="మా అతిథుల మాటలు" />
-    <div class="grid grid--3">
+    <div class="grid grid--3 testimonials">
       @for (t of testimonials; track t.name) {
         <app-testimonial-card [testimonial]="t" />
       }

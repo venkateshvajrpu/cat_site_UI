@@ -13,7 +13,7 @@
 }
 
 .section {
-  padding-block: var(--space-10);
+  padding-block: var(--space-9);
 }
 
 .section--alt {
@@ -67,7 +67,7 @@
 
 @media (min-width: 48rem) {
   .section {
-    padding-block: var(--space-11);
+    padding-block: var(--space-10);
   }
 
   .grid--2,

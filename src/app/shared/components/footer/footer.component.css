@@ -70,7 +70,13 @@
 .footer__list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-1);
+}
+
+/* Phone: quick links in two columns so 44px rows don't make the footer taller. */
+.footer__col--links .footer__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .footer__list li {
@@ -82,7 +88,8 @@
 .footer__link {
   color: var(--color-white);
   text-decoration: none;
-  min-height: 1.75rem;
+  min-height: var(--tap-target);
+  min-width: var(--tap-target);
   display: inline-flex;
   align-items: center;
 }
@@ -104,15 +111,28 @@
   gap: var(--space-2);
 }
 
+.footer__address {
+  gap: var(--space-1);
+}
+
 .footer__address p {
   display: flex;
   gap: var(--space-2);
+  align-items: center;
+}
+
+.footer__address p:first-child {
   align-items: flex-start;
+  padding-block: var(--space-2);
 }
 
 .footer__address app-icon {
-  margin-block-start: 0.3rem;
+  flex: 0 0 auto;
   color: var(--color-accent);
+}
+
+.footer__address p:first-child app-icon {
+  margin-block-start: 0.3rem;
 }
 
 .footer__areas {
@@ -130,6 +150,14 @@
 @media (min-width: 48rem) {
   .footer__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer__col--links .footer__list {
+    display: flex;
+  }
+
+  .footer__link {
+    min-height: 2rem;
   }
 
   .footer {

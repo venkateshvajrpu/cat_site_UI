@@ -57,12 +57,15 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  /* clip (not hidden) so off-canvas elements never add sideways scroll, without breaking position: sticky */
+  overflow-x: clip;
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--nav-height) + var(--space-4));
 }
 
 body {
   min-height: 100dvh;
+  overflow-x: clip;
   font-family: var(--font-body);
   font-size: var(--text-base);
   line-height: var(--leading-normal);
@@ -307,6 +310,13 @@ a:hover {
 
 .btn--block {
   width: 100%;
+}
+
+/* Touch devices and phones: small buttons still get a full 44px hit area. */
+@media (pointer: coarse), (max-width: 47.99rem) {
+  .btn--sm {
+    min-height: var(--tap-target);
+  }
 }
 
 /* ---- Reduced motion ------------------------------------------------------- */

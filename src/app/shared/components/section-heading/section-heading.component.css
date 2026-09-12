@@ -1,6 +1,6 @@
 :host {
   display: block;
-  margin-block-end: var(--space-8);
+  margin-block-end: var(--space-7);
 }
 
 .heading {
@@ -51,4 +51,10 @@
 
 :host(.is-on-dark) .heading__divider {
   background-color: var(--color-accent-light);
+}
+
+@media (min-width: 48rem) {
+  :host {
+    margin-block-end: var(--space-8);
+  }
 }

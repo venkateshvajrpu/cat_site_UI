@@ -2,13 +2,13 @@
   <header class="card__head">
     <span class="veg-badge" role="img" aria-label="Pure vegetarian"></span>
     <h3 class="card__title">{{ item().name }}</h3>
+    @if (item().teluguName) {
+      <p class="card__telugu" lang="te">{{ item().teluguName }}</p>
+    }
     @if (item().isSpicy) {
       <span class="card__spicy" title="Spicy">Spicy</span>
     }
   </header>
-  @if (item().teluguName) {
-    <p class="card__telugu" lang="te">{{ item().teluguName }}</p>
-  }
   <p class="card__desc">{{ item().description }}</p>
   @if (tags().length) {
     <ul class="card__tags" role="list">
