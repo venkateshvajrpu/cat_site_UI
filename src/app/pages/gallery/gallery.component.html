@@ -1,0 +1,33 @@
+<section class="section page-head mandala-bg">
+  <div class="container">
+    <app-section-heading [level]="1" eyebrow="Gallery" title="A taste of our events" teluguTitle="మా వేడుకల చిత్రాలు">
+      Leaf meals, buffets and live counters from weddings, poojas and office lunches around {{ config.address.city }}.
+    </app-section-heading>
+    <div class="cluster cluster--center filters" role="group" aria-label="Filter gallery">
+      @for (filter of filters; track filter.id) {
+        <button type="button" class="filter" [class.is-active]="active() === filter.id" [attr.aria-pressed]="active() === filter.id" (click)="select(filter.id)">
+          {{ filter.label }}
+        </button>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section gallery" appReveal>
+  <div class="container">
+    <ul class="masonry" role="list">
+      @for (image of images(); track image.src; let i = $index) {
+        <li class="masonry__item">
+          <button type="button" class="thumb" (click)="open(i)" [attr.aria-label]="'Open image: ' + image.alt">
+            <img [ngSrc]="image.src" [width]="image.width" [height]="image.height" [alt]="image.alt" sizes="(min-width: 64rem) 33vw, (min-width: 48rem) 50vw, 100vw" />
+          </button>
+        </li>
+      }
+    </ul>
+    <p class="gallery__count">{{ images().length }} photos</p>
+  </div>
+</section>
+
+<app-image-lightbox [images]="images()" />
+
+<app-cta-banner title="Want your event to look like this?" />

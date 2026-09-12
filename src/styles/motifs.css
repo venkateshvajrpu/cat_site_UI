@@ -1,0 +1,181 @@
+/* ==========================================================================
+   Regional motifs — kolam divider, temple arch, banana-leaf card, veg badge,
+   mandala background, and the reveal-on-scroll classes.
+   SVG shapes are applied via mask-image so their colour stays token-driven.
+   ========================================================================== */
+
+/* ---- Kolam divider ---------------------------------------------------------
+   A repeating "kambi" chain of loops with a dot in each eye.
+   Usage: <div class="kolam-divider" aria-hidden="true"></div>              */
+.kolam-divider {
+  --kolam-w: 36px;
+  --kolam-h: 24px;
+  height: var(--kolam-h);
+  width: min(100%, 18rem);
+  margin-inline: auto;
+  background-color: var(--color-accent);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='24' viewBox='0 0 36 24'%3E%3Cpath d='M0 12c6-9 12-9 18 0s12 9 18 0M0 12c6 9 12 9 18 0s12-9 18 0' fill='none' stroke='%23000' stroke-width='1.6'/%3E%3Ccircle cx='9' cy='12' r='2' fill='%23000'/%3E%3Ccircle cx='27' cy='12' r='2' fill='%23000'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='24' viewBox='0 0 36 24'%3E%3Cpath d='M0 12c6-9 12-9 18 0s12 9 18 0M0 12c6 9 12 9 18 0s12-9 18 0' fill='none' stroke='%23000' stroke-width='1.6'/%3E%3Ccircle cx='9' cy='12' r='2' fill='%23000'/%3E%3Ccircle cx='27' cy='12' r='2' fill='%23000'/%3E%3C/svg%3E");
+  -webkit-mask-repeat: repeat-x;
+  mask-repeat: repeat-x;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: var(--kolam-w) var(--kolam-h);
+  mask-size: var(--kolam-w) var(--kolam-h);
+}
+
+.kolam-divider--primary {
+  background-color: var(--color-primary);
+}
+
+.kolam-divider--light {
+  background-color: var(--color-accent-light);
+}
+
+.kolam-divider--wide {
+  width: 100%;
+}
+
+/* ---- Temple arch (scalloped top edge) -------------------------------------
+   Set --arch-bg to the section's own background colour.
+   Usage: <section class="section section--alt temple-arch"> …             */
+.temple-arch {
+  --arch-bg: var(--color-surface);
+  --arch-size: 1.25rem;
+  position: relative;
+}
+
+.temple-arch::before {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  top: calc(-1 * var(--arch-size) + 1px);
+  height: var(--arch-size);
+  background-image: radial-gradient(
+    circle at 50% 100%,
+    var(--arch-bg) calc(var(--arch-size) * 0.7),
+    transparent calc(var(--arch-size) * 0.7 + 1px)
+  );
+  background-size: calc(var(--arch-size) * 1.5) var(--arch-size);
+  background-repeat: repeat-x;
+  background-position: center bottom;
+  pointer-events: none;
+}
+
+.temple-arch--warm {
+  --arch-bg: var(--color-surface-2);
+}
+
+.temple-arch--primary {
+  --arch-bg: var(--color-primary);
+}
+
+/* ---- Banana-leaf card ------------------------------------------------------
+   Deep green gradient with faint diagonal leaf veins.                      */
+.leaf-card {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  color: var(--color-white);
+  background-color: var(--color-secondary);
+  background-image:
+    repeating-linear-gradient(
+      -35deg,
+      transparent 0 0.9rem,
+      color-mix(in srgb, var(--color-white) 7%, transparent) 0.9rem 1rem
+    ),
+    linear-gradient(135deg, var(--color-secondary-light), var(--color-secondary-dark));
+  box-shadow: var(--shadow-md);
+}
+
+.leaf-card::before {
+  /* central midrib */
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  left: 50%;
+  width: 2px;
+  background: color-mix(in srgb, var(--color-white) 14%, transparent);
+  pointer-events: none;
+}
+
+.leaf-card :is(h2, h3, h4) {
+  color: var(--color-white);
+}
+
+/* ---- Pure-veg badge --------------------------------------------------------
+   The standard green square with a dot. Pure CSS, scales with font-size.
+   Usage: <span class="veg-badge" role="img" aria-label="Pure vegetarian"></span> */
+.veg-badge {
+  display: inline-block;
+  width: 1.15em;
+  height: 1.15em;
+  flex: 0 0 auto;
+  border: 0.12em solid var(--color-secondary);
+  border-radius: 0.15em;
+  background: var(--color-white);
+  position: relative;
+  vertical-align: -0.15em;
+}
+
+.veg-badge::after {
+  content: '';
+  position: absolute;
+  inset: 0.2em;
+  border-radius: 50%;
+  background: var(--color-secondary);
+}
+
+/* ---- Mandala background ----------------------------------------------------
+   Faint concentric rings in gold; put on hero / CTA sections.              */
+.mandala-bg {
+  position: relative;
+  isolation: isolate;
+}
+
+.mandala-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-below);
+  pointer-events: none;
+  background-image:
+    repeating-radial-gradient(
+      circle at 85% 15%,
+      transparent 0 2.5rem,
+      color-mix(in srgb, var(--color-accent) 14%, transparent) 2.5rem calc(2.5rem + 1px)
+    ),
+    repeating-radial-gradient(
+      circle at 10% 90%,
+      transparent 0 3.5rem,
+      color-mix(in srgb, var(--color-accent) 10%, transparent) 3.5rem calc(3.5rem + 1px)
+    );
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 85%);
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 85%);
+}
+
+/* ---- Reveal on scroll ------------------------------------------------------
+   RevealOnScrollDirective adds .reveal in the browser and .is-visible on
+   intersection. Prerendered HTML never carries .reveal, so content is
+   visible without JS.                                                      */
+.reveal {
+  opacity: 0;
+  transform: translateY(1rem);
+  transition:
+    opacity var(--duration-slow) var(--ease-out),
+    transform var(--duration-slow) var(--ease-out);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

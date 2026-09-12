@@ -1,0 +1,6 @@
+<span class="badge" [class]="'badge badge--' + size()">
+  <span class="veg-badge" [attr.role]="showLabel() ? null : 'img'" [attr.aria-label]="showLabel() ? null : label()" [attr.aria-hidden]="showLabel() ? 'true' : null"></span>
+  @if (showLabel()) {
+    <span class="badge__label">{{ label() }}</span>
+  }
+</span>

@@ -1,0 +1,12 @@
+{
+  "name": "Pure-veg South Indian catering",
+  "short_name": "Catering",
+  "icons": [
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ],
+  "theme_color": "#8b1a1a",
+  "background_color": "#fff8ec",
+  "display": "browser",
+  "start_url": "/"
+}

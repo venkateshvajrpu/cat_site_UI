@@ -1,0 +1,67 @@
+<section class="section page-head mandala-bg">
+  <div class="container">
+    <app-section-heading [level]="1" eyebrow="Our menu" title="Pure-veg South Indian menu" teluguTitle="మా వంటకాల జాబితా">
+      {{ totalDishes }} dishes across {{ categories.length }} categories — all pure vegetarian. Mix and match, or ask us for a custom
+      menu for your occasion.
+    </app-section-heading>
+    <div class="cluster cluster--center">
+      <app-veg-badge size="lg" />
+    </div>
+  </div>
+</section>
+
+<div class="filter" role="group" aria-label="Filter menu by category">
+  <div class="container filter__scroll">
+    <button type="button" class="filter__btn" [class.is-active]="active() === all" [attr.aria-pressed]="active() === all" (click)="select(all)">
+      All
+    </button>
+    @for (category of categories; track category.id) {
+      <button type="button" class="filter__btn" [class.is-active]="active() === category.id" [attr.aria-pressed]="active() === category.id" (click)="select(category.id)">
+        <app-icon [name]="category.icon" />
+        {{ category.title }}
+      </button>
+    }
+  </div>
+</div>
+
+@for (category of visible(); track category.id) {
+  <section class="section category" [id]="category.id" appReveal>
+    <div class="container">
+      <header class="category__head">
+        <span class="category__icon"><app-icon [name]="category.icon" size="1.75rem" /></span>
+        <div>
+          <h2 class="category__title">{{ category.title }}</h2>
+          @if (category.teluguTitle) {
+            <p class="category__telugu" lang="te">{{ category.teluguTitle }}</p>
+          }
+          <p class="category__desc">{{ category.description }}</p>
+        </div>
+        <a class="btn btn--whatsapp btn--sm category__cta" [href]="wa.forMenu(category)" target="_blank" rel="noopener">
+          <app-icon name="whatsapp" />
+          Ask for this menu
+        </a>
+      </header>
+      <div class="grid grid--3">
+        @for (item of category.items; track item.name) {
+          <app-menu-item-card [item]="item" />
+        }
+      </div>
+    </div>
+  </section>
+}
+
+<section class="section section--primary temple-arch temple-arch--primary custom" appReveal>
+  <div class="container custom__inner">
+    <div>
+      <h2 class="custom__title">Don’t see what you need?</h2>
+      <p class="custom__text">
+        Tell us the occasion and we’ll design a custom pure-veg menu — Jain, kids’, festival prasadam or a regional
+        favourite from your family.
+      </p>
+    </div>
+    <a class="btn btn--accent btn--lg" [href]="wa.customMenu()" target="_blank" rel="noopener">
+      <app-icon name="whatsapp" size="1.25em" />
+      Ask for a custom menu
+    </a>
+  </div>
+</section>

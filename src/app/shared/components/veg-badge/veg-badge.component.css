@@ -1,0 +1,24 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: var(--weight-semibold);
+  color: var(--color-secondary);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.badge--sm {
+  font-size: var(--text-xs);
+}
+
+.badge--md {
+  font-size: var(--text-sm);
+}
+
+.badge--lg {
+  font-size: var(--text-base);
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-secondary-soft);
+  border-radius: var(--radius-full);
+}

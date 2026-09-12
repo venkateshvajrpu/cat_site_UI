@@ -1,0 +1,103 @@
+<section class="section page-head mandala-bg">
+  <div class="container">
+    <app-section-heading [level]="1" eyebrow="About us" title="A pure-veg kitchen with Andhra roots" teluguTitle="మా గురించి">
+      {{ config.name }} began as a family kitchen cooking for neighbourhood weddings. Today we serve thousands of guests a
+      month across {{ config.address.city }} — still with the same ghee, the same recipes and the same care.
+    </app-section-heading>
+  </div>
+</section>
+
+<section class="section story" appReveal>
+  <div class="container story__inner">
+    <div class="story__media">
+      <!-- TODO(client): replace with a real kitchen / team photo -->
+      <img ngSrc="images/about/kitchen.webp" width="1000" height="750" alt="Cooks preparing a large vessel of sambar in the catering kitchen" sizes="(min-width: 64rem) 45vw, 100vw" />
+    </div>
+    <div class="story__copy stack">
+      <h2>Our story</h2>
+      <!-- TODO(client): replace with the real story -->
+      <p>
+        It started with a single wedding in {{ config.address.city }}: three hundred guests, banana leaves, and a
+        grandmother’s recipes for pappu, gongura and bobbatlu. Word spread the way good food does.
+      </p>
+      <p>
+        @if (yearsServing) {
+          Over {{ yearsServing }} years later,
+        } @else {
+          Today,
+        }
+        we cook for weddings, gruhapravesams, poojas and offices — always pure vegetarian, always fresh, always on time
+        for the muhurtham.
+      </p>
+      <app-veg-badge size="lg" label="No egg · No meat · No seafood" />
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt temple-arch" appReveal>
+  <div class="container">
+    <app-section-heading eyebrow="Our philosophy" title="Satvik food, served with respect" teluguTitle="మా నమ్మకం">
+      Food is the first blessing a guest receives. We cook the way we would for our own family — and serve every plate
+      as if it were the most important one.
+    </app-section-heading>
+    <div class="grid grid--3 pillars">
+      <div class="pillar">
+        <h3>Pure vegetarian, without compromise</h3>
+        <p>One kitchen, one promise. Jain and no-onion-no-garlic menus are prepared with separate utensils on request.</p>
+      </div>
+      <div class="pillar">
+        <h3>Regional, seasonal, honest</h3>
+        <p>Gongura in monsoon, mangoes in summer, ariselu at Sankranti. Menus follow the Andhra calendar.</p>
+      </div>
+      <div class="pillar">
+        <h3>Service you don’t have to manage</h3>
+        <p>Our team handles set-up, serving and clean-up so hosts can actually enjoy their own function.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" appReveal>
+  <div class="container">
+    <app-section-heading eyebrow="Hygiene & kitchen" title="Standards you can taste" teluguTitle="శుభ్రత, నాణ్యత" />
+    <ul class="grid grid--4 standards" role="list">
+      @for (item of standards; track item.title) {
+        <li class="standard">
+          <span class="standard__icon"><app-icon [name]="item.icon" size="1.5rem" /></span>
+          <h3 class="standard__title">{{ item.title }}</h3>
+          <p class="standard__text">{{ item.text }}</p>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<section class="section section--warm temple-arch temple-arch--warm" appReveal>
+  <div class="container">
+    <app-section-heading eyebrow="The team" title="People behind the food" teluguTitle="మా బృందం" />
+    <ul class="grid grid--3" role="list">
+      @for (member of team; track member.title) {
+        <li class="member">
+          <span class="member__icon"><app-icon [name]="member.icon" size="1.75rem" /></span>
+          <h3 class="member__title">{{ member.title }}</h3>
+          <p class="member__text">{{ member.text }}</p>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<section class="section" appReveal>
+  <div class="container">
+    <app-section-heading eyebrow="Where we serve" title="Across Visakhapatnam and beyond" teluguTitle="మేము సేవలందించే ప్రాంతాలు">
+      Based in {{ config.address.city }}. Destination events further into Andhra are welcome — ask us about travel.
+    </app-section-heading>
+    <ul class="cluster cluster--center areas" role="list">
+      @for (area of config.serviceAreas; track area) {
+        <li class="area"><app-icon name="pin" /> {{ area }}</li>
+      }
+    </ul>
+  </div>
+</section>
+
+<app-cta-banner title="Let’s cook for your family" />
